@@ -2,7 +2,7 @@ package dao;
 
 import base.BaseDao;
 import dto.UrunDetayDto;
-import dto.UrunYorumCountDetay;
+import dto.UrunYorumCountDetayDto;
 import entity.Urun;
 import org.hibernate.query.Query;
 
@@ -90,9 +90,14 @@ public class UrunDao extends BaseDao {
         return query.list();
     }
 
-    public List<UrunYorumCountDetay> getAllUrunWithYorumCount() {
-        String sql = " select " +
-                " new dto.UrunYorumCountDetay(urun.id,urun.adi,urun.fiyat, (select count(*) from UrunYorum urunYorum where urun.id=urunYorum.urun.id) )" +
+    /**
+     *
+     * @return urun ve urune ait yorum sayısını
+     */
+    public List<UrunYorumCountDetayDto> getAllUrunWithYorumCount() {
+        String sql;
+        sql = " select " +
+                " new dto.UrunYorumCountDetayDto(urun.id,urun.adi,urun.fiyat, (select count(*) from UrunYorum urunYorum where urun.id=urunYorum.urun.id) )" +
                 " from Urun urun ";
 
         Query query = getCurrentSession().createQuery(sql);

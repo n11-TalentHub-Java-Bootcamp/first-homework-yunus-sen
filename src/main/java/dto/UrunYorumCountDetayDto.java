@@ -2,16 +2,16 @@ package dto;
 
 import java.math.BigDecimal;
 
-public class UrunYorumCountDetay {
+public class UrunYorumCountDetayDto {
 
-    public UrunYorumCountDetay(Long urunId, String urunAdi, BigDecimal fiyat, Long yorumSayisi) {
+    public UrunYorumCountDetayDto(Long urunId, String urunAdi, BigDecimal fiyat, Long yorumSayisi) {
         this.urunId = urunId;
         this.urunAdi = urunAdi;
         this.fiyat = fiyat;
         this.yorumSayisi = yorumSayisi;
     }
 
-    public UrunYorumCountDetay() {
+    public UrunYorumCountDetayDto() {
     }
 
     private Long urunId;

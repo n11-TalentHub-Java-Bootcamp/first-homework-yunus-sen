@@ -1,7 +1,6 @@
 package uygulamalar;
 
-import dto.UrunYorumCountDetay;
-import entity.Urun;
+import dto.UrunYorumCountDetayDto;
 import entityService.UrunEntityService;
 
 import java.util.List;
@@ -9,9 +8,9 @@ import java.util.List;
 public class GetAllUrunWithYorumCountApp {
     public static void main(String[] args) {
         UrunEntityService service = new UrunEntityService();
-        List<UrunYorumCountDetay> urunList = service.getAllUrunWithYorumCount();
+        List<UrunYorumCountDetayDto> urunList = service.getAllUrunWithYorumCount();
 
-        for (UrunYorumCountDetay urun : urunList) {
+        for (UrunYorumCountDetayDto urun : urunList) {
             System.out.println(urun);
         }
     }

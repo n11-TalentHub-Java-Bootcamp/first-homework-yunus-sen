@@ -2,7 +2,7 @@ package entityService;
 
 import dao.UrunDao;
 import dto.UrunDetayDto;
-import dto.UrunYorumCountDetay;
+import dto.UrunYorumCountDetayDto;
 import entity.Urun;
 
 import java.math.BigDecimal;
@@ -40,7 +40,7 @@ public class UrunEntityService {
         return urunDao.findAllUrunDetayDtoByKategoriKirilim(kirilim);
     }
 
-    public List<UrunYorumCountDetay> getAllUrunWithYorumCount(){
+    public List<UrunYorumCountDetayDto> getAllUrunWithYorumCount(){
         return  urunDao.getAllUrunWithYorumCount();
     }
 

@@ -1,9 +1,8 @@
 package entityService;
 
-import dao.UrunDao;
 import dao.YorumDao;
+import dto.KullaniciYorumDetayDto;
 import dto.YorumDetayDto;
-import entity.UrunYorum;
 
 import java.util.List;
 
@@ -17,4 +16,8 @@ public class UrunYorumEntityService {
     public List<YorumDetayDto> getAllYorumDetayByUrunId(Long urunId){
         return yorumDao.getAllYorumDetayByUrunId(urunId);
     }
+    public List<KullaniciYorumDetayDto> getAllYorumBykullaniciId(Long kullaniciId){
+        return yorumDao.getAllYorumBykullaniciId(kullaniciId);
+    }
+
 }

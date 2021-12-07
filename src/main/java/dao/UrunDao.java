@@ -1,6 +1,8 @@
 package dao;
+
 import base.BaseDao;
 import dto.UrunDetayDto;
+import dto.UrunYorumCountDetay;
 import entity.Urun;
 import org.hibernate.query.Query;
 
@@ -9,7 +11,7 @@ import java.util.List;
 
 public class UrunDao extends BaseDao {
 
-    public List<Urun> findAll(){
+    public List<Urun> findAll() {
 
         String sql = "select urun from Urun urun";
 
@@ -18,7 +20,7 @@ public class UrunDao extends BaseDao {
         return query.list();
     }
 
-    public Urun findById(Long id){
+    public Urun findById(Long id) {
 
         String sql = "select urun from Urun urun where urun.id = :givenId";
 
@@ -28,15 +30,15 @@ public class UrunDao extends BaseDao {
         return (Urun) query.uniqueResult();
     }
 
-    public List<Urun> findAllUrunListByFiyatGeAndFiyatLe(BigDecimal fiyatGe, BigDecimal fiyatLe){
+    public List<Urun> findAllUrunListByFiyatGeAndFiyatLe(BigDecimal fiyatGe, BigDecimal fiyatLe) {
 
         String sql = "select urun from Urun urun where 1=1 ";
 
-        if (fiyatGe != null){
+        if (fiyatGe != null) {
             sql = sql + " and urun.fiyat >= :fiyatGe ";
         }
 
-        if (fiyatLe != null){
+        if (fiyatLe != null) {
             sql = sql + " and urun.fiyat <= :fiyatLe ";
         }
 
@@ -47,11 +49,11 @@ public class UrunDao extends BaseDao {
         return query.list();
     }
 
-    public List<Urun> findAllUrunListByFiyatBetween(BigDecimal fiyatGe, BigDecimal fiyatLe){
+    public List<Urun> findAllUrunListByFiyatBetween(BigDecimal fiyatGe, BigDecimal fiyatLe) {
 
         String sql = "select urun from Urun urun where 1=1 ";
 
-        if (fiyatGe != null && fiyatLe != null){
+        if (fiyatGe != null && fiyatLe != null) {
             sql = sql + " and urun.fiyat between :fiyatGe and :fiyatLe ";
         }
 
@@ -85,6 +87,15 @@ public class UrunDao extends BaseDao {
         Query query = getCurrentSession().createQuery(sql);
         query.setParameter("kirilim", kirilim);
 
+        return query.list();
+    }
+
+    public List<UrunYorumCountDetay> getAllUrunWithYorumCount() {
+        String sql = " select " +
+                " new dto.UrunYorumCountDetay(urun.id,urun.adi,urun.fiyat, (select count(*) from UrunYorum urunYorum where urun.id=urunYorum.urun.id) )" +
+                " from Urun urun ";
+
+        Query query = getCurrentSession().createQuery(sql);
         return query.list();
     }
 

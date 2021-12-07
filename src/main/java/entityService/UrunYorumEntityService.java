@@ -7,10 +7,10 @@ import entity.UrunYorum;
 
 import java.util.List;
 
-public class UrunYorumService {
+public class UrunYorumEntityService {
     private YorumDao yorumDao;
 
-    public UrunYorumService() {
+    public UrunYorumEntityService() {
         yorumDao = new YorumDao();
     }
 

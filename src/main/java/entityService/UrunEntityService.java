@@ -2,6 +2,7 @@ package entityService;
 
 import dao.UrunDao;
 import dto.UrunDetayDto;
+import dto.UrunYorumCountDetay;
 import entity.Urun;
 
 import java.math.BigDecimal;
@@ -15,23 +16,23 @@ public class UrunEntityService {
         urunDao = new UrunDao();
     }
 
-    public List<Urun> findAll(){
+    public List<Urun> findAll() {
         return urunDao.findAll();
     }
 
-    public Urun findById(Long id){
+    public Urun findById(Long id) {
         return urunDao.findById(id);
     }
 
-    public List<Urun> findAllUrunListByFiyatGeAndFiyatLe(BigDecimal fiyatGe, BigDecimal fiyatLe){
+    public List<Urun> findAllUrunListByFiyatGeAndFiyatLe(BigDecimal fiyatGe, BigDecimal fiyatLe) {
         return urunDao.findAllUrunListByFiyatGeAndFiyatLe(fiyatGe, fiyatLe);
     }
 
-    public List<Urun> findAllUrunListByFiyatBetween(BigDecimal fiyatGe, BigDecimal fiyatLe){
+    public List<Urun> findAllUrunListByFiyatBetween(BigDecimal fiyatGe, BigDecimal fiyatLe) {
         return urunDao.findAllUrunListByFiyatBetween(fiyatGe, fiyatLe);
     }
 
-    public List<Urun> findAllUrunByKategoriKirilim(Long kirilim){
+    public List<Urun> findAllUrunByKategoriKirilim(Long kirilim) {
         return urunDao.findAllUrunByKategoriKirilim(kirilim);
     }
 
@@ -39,4 +40,8 @@ public class UrunEntityService {
         return urunDao.findAllUrunDetayDtoByKategoriKirilim(kirilim);
     }
 
+    public List<UrunYorumCountDetay> getAllUrunWithYorumCount(){
+        return  urunDao.getAllUrunWithYorumCount();
     }
+
+}

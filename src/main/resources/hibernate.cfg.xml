@@ -24,6 +24,8 @@
         <!-- Annotated entity classes -->
         <mapping class="entity.Kategori"/>
         <mapping class="entity.Urun"/>
+        <mapping class="entity.Kullanici"/>
+        <mapping class="entity.UrunYorum"/>
 
     </session-factory>
 </hibernate-configuration>
